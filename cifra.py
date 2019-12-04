@@ -77,7 +77,6 @@ def createPairsToEncrypt(text):
             break
 
     pairs = [prepareText[i:i+2] for i in range(0, len(prepareText), 2)]
-    print(pairs)
     return pairs
 
 
@@ -150,8 +149,6 @@ if key == None:
     exit()
 
 table = createTable(key)
-for i in table:
-    print(i)
 
 acao = input('Digite C para cifrar e D para decifrar:\n').upper()
 if acao == 'C':
