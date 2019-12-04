@@ -66,8 +66,15 @@ def createPairs(text):
             break
 
     pairs = [prepareText[i:i+2] for i in range(0, len(prepareText), 2)]
-    print(pairs)
     return pairs
+
+
+def findLetterPositionInTable(letter, table):
+    for i in range(5):
+        for j in range(5):
+            if letter == table[i][j]:
+                return i, j
+
 
 # pathInput = input('Digite o caminho do arquivo de entrada: ')
 # contentInput = readFile(pathInput)
