@@ -42,28 +42,52 @@ def createTable(key):
     return table
 
 def createPairs(text):
+    text = list(text)
+    prepareText = ''
+    posLeft = 0
+    posRight = 1
+    # insere os X's necessários
+    while True:
+        lastPosition = len(text) - 1
 
+        if posLeft < lastPosition and posRight <= lastPosition:
+            if text[posLeft] != text[posRight]:
+                prepareText += text[posLeft] + text[posRight] 
+                posLeft += 2
+                posRight += 2
+            else:
+                prepareText += text[posLeft] + 'X'
+                posLeft += 1
+                posRight += 1
+        elif posLeft == lastPosition:
+            prepareText += text[posLeft] + 'X'
+            break
+        elif posLeft > lastPosition:
+            break
 
+    pairs = [prepareText[i:i+2] for i in range(0, len(prepareText), 2)]
+    print(pairs)
+    return pairs
 
-pathInput = input('Digite o caminho do arquivo de entrada: ')
-contentInput = readFile(pathInput)
-if contentInput == None:
-    exit()
+# pathInput = input('Digite o caminho do arquivo de entrada: ')
+# contentInput = readFile(pathInput)
+# if contentInput == None:
+#     exit()
 
-key = input('Digite a key: ')
-key = formatKey(key)
-if key == None:
-    exit()
+# key = input('Digite a key: ')
+# key = formatKey(key)
+# if key == None:
+#     exit()
 
-table = createTable(key)
+# table = createTable(key)
 
-acao = input('Digite C para cifrar e D para decifrar: ').upper()
-if acao == 'C':
-    pass
-elif acao == 'D':
-    pass
-else:
-    print('Opção inválida.')
+# acao = input('Digite C para cifrar e D para decifrar: ').upper()
+# if acao == 'C':
+#     pass
+# elif acao == 'D':
+#     pass
+# else:
+#     print('Opção inválida.')
 
 
 
