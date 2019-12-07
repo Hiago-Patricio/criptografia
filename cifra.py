@@ -139,7 +139,7 @@ def decipher(textInput, table):
 
 
 pathInput = input('Digite o caminho do arquivo de entrada:\n')
-contentInput = readFile(pathInput)
+contentInput = readFile(pathInput).replace('\n','')
 if contentInput == None:
     exit()
 
