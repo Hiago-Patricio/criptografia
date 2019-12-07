@@ -1,5 +1,4 @@
-import string
-
+import string, re
 
 '''
 Faz a leitura do arquivo e formata o texto lido
@@ -8,9 +7,10 @@ def readFile(pathInput):
     try:
         with open(pathInput, 'r') as f:
             textInput = f.read()
-        textInput = textInput.replace(' ','')
         textInput = textInput.upper()
+        textInput = re.sub('[^A-Z]+', '', textInput)
         textInput = textInput.replace('Y', '')
+        textInput = textInput.replace('\n', '')
         return textInput
     except:
         print('Caminho inválido.')
@@ -139,7 +139,7 @@ def decipher(textInput, table):
 
 
 pathInput = input('Digite o caminho do arquivo de entrada:\n')
-contentInput = readFile(pathInput).replace('\n','')
+contentInput = readFile(pathInput)
 if contentInput == None:
     exit()
 
@@ -157,6 +157,8 @@ elif acao == 'D':
     textOutput = decipher(contentInput, table)
 else:
     print('Opção inválida.')
+
+print(textOutput)
 
 fileOutput = input('Digite o caminho do arquivo de saída:\n')
 if writeFile(fileOutput, textOutput):
